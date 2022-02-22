@@ -1,5 +1,7 @@
-name: Build
-
+name: Build dev
+on:
+  release:
+    types: [created]
 jobs:
   build:
     name: Build
@@ -38,7 +40,7 @@ jobs:
 
       - name: Download & Repack Lavalink.jar
         run: |
-          wget "https://ci.fredboat.com/repository/download/Lavalink_Build/9339:id/Lavalink.jar?guest=1" -O Lavalink.jar;
+          wget "https://ci.fredboat.com/repository/download/Lavalink_Build/${{ env.VERSION }}:id/Lavalink.jar?guest=1" -O Lavalink.jar;
           wget https://github.com/aikaterna/lavaplayer-natives/raw/master/linux-aarch64/libconnector.so
           mkdir -p Lavalink-patch/lavaplayer-natives-patch; pushd Lavalink-patch
           unzip ../Lavalink.jar

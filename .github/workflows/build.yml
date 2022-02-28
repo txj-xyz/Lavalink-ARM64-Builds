@@ -73,7 +73,7 @@ jobs:
       - name: Release LavalinkARM64.jar
         uses: softprops/action-gh-release@v1
         with:
-          name: "(dev build) ${{ github.event.inputs.tag_name }}"
+          name: "(master build) ${{ github.event.inputs.tag_name }}"
           tag_name: ${{ github.event.inputs.tag }}
           body: ${{ github.event.inputs.release_body }}
           files: LavalinkARM64.jar

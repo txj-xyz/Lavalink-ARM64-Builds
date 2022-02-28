@@ -6,6 +6,10 @@ on:
         description: 'Lavalink Dev Branch Version'     
         required: true
         default: 'null'
+      tag:
+        description: 'Release tag name'     
+        required: true
+        default: 'null'
 jobs:
   build:
     name: Build
@@ -60,4 +64,5 @@ jobs:
       - name: Release LavalinkDevARM64.jar
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: ${{ github.event.inputs.tag }}
           files: LavalinkDevARM64.jar

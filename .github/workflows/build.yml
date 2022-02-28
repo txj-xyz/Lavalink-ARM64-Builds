@@ -33,7 +33,7 @@ jobs:
           OWNER="$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')"
           echo "IMG=${IMG}" >> $GITHUB_ENV
           echo "IMAGE=ghcr.io/${OWNER}/${IMG}" >> $GITHUB_ENV
-          echo "VERSION=${{ github.event.inputs.tag }}" >> $GITHUB_ENV
+          echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1

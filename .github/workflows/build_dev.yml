@@ -1,5 +1,11 @@
-name: Build dev
-on: workflow_dispatch
+name: Build Dev
+on: 
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Dev Branch Release Version'     
+        required: true
+        default: 'null'
 jobs:
   build:
     name: Build
@@ -14,7 +20,7 @@ jobs:
           OWNER="$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')"
           echo "IMG=${IMG}" >> $GITHUB_ENV
           echo "IMAGE=ghcr.io/${OWNER}/${IMG}" >> $GITHUB_ENV
-          echo "VERSION=$GITHUB_REF_NAME" >> $GITHUB_ENV
+          echo "VERSION=3.4" >> $GITHUB_ENV
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1

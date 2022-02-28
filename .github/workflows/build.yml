@@ -1,9 +1,9 @@
-name: Build Dev
+name: Build Master
 on: 
   workflow_dispatch:
     inputs:
       version:
-        description: 'Lavalink Dev Branch Version'     
+        description: 'Lavalink Master Branch Version'     
         required: true
         default: 'null'
       tag_name:

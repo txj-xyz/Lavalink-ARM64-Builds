@@ -1,8 +1,24 @@
-name: Build
-on:
-  release:
-    types: [created]
-
+name: Build Dev
+on: 
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Lavalink Dev Branch Version'     
+        required: true
+        default: 'null'
+      tag_name:
+        description: 'Release Title'     
+        required: true
+        default: 'null'
+      release_body:
+        description: 'Release Body'     
+        required: true
+        default: 'null'
+      tag:
+        description: 'Release tag (vX.X.X)'     
+        required: true
+        default: 'null'
+      
 jobs:
   build:
     name: Build
@@ -57,4 +73,7 @@ jobs:
       - name: Release LavalinkARM64.jar
         uses: softprops/action-gh-release@v1
         with:
+          name: "(master build) ${{ github.event.inputs.tag_name }}"
+          tag_name: ${{ github.event.inputs.tag }}
+          body: ${{ github.event.inputs.release_body }}
           files: LavalinkARM64.jar
